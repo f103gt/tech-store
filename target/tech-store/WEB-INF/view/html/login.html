@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <!--<link rel="stylesheet" type="text/css" href="/tech-store.com/css/login.css">
+    <script defer src="/tech-store.com/js/login.js"></script>-->
+    <link rel="stylesheet" type="text/css" href="/tech-store.com/css/login.css">
+    <script defer src="/tech-store.com/js/login.js"></script>
+</head>
+
+<body>
+<div class="container">
+    <form id="form" th:method="POST" th:action="@{/tech-store.com/process-registration}" th:object="${user}"
+          novalidate>
+        <h1>Login</h1>
+        <div class="input-control">
+            <label for="email">E-mail</label>
+            <input id="email" name="email" type="email" placeholder="johndoe123@domain.com"
+                   pattern="^[a-z0-9]+(?:[.+\\-][a-z0-9]+)*@gmail\.com$"
+                   title="E-mail address must contain domain 'gmail.com'."
+                   required>
+            <!--<div class="error" th:if="${#fields.hasErrors('email')}" th:errors="*{email}" th:errorclass="error"></div>-->
+        </div>
+        <div class="input-control">
+            <label for="password">Password</label>
+            <input id="password" name="password" type="password"
+                   pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,20}$"
+                   title="Password must contain at least one lowercase letter, one uppercase letter, one digit, one special character (@$!%*?&), and be 8-20 characters long"
+                   required>
+            <!--<div class="error" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"
+                 th:errorclass="error"></div>-->
+        </div>
+        <p class="message">Forgot <a href="/tech-store.com/restore-username">Username</a>/<a
+                href="/tech-store.com/restore-password">Password</a>?</p>
+        <button type="submit">Login</button>
+        <p class="message">Do not have an account? <a href="/tech-store.com/registration">Register</a></p>
+    </form>
+</div>
+</body>
+
+</html>

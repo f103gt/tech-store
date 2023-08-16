@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/css/navigation.css">
+    <script defer src="/js/navigation.js"></script>
+    <link rel="stylesheet" type="text/css" href="/css/registration.css">
+    <script defer src="/tech-store.com/js/contact-information.js"></script>
+    <script defer src="/js/full-name.js"></script>
+    <script defer src="/js/email-registration.js"></script>
+    <script defer src="/js/patronymic.js"></script>
+    <script defer src="/js/phone.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+          integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
+</head>
+<body>
+<header th:insert="~{fragments/navigation :: navbar}">
+</header>
+<div class="container">
+    <form id="form" th:method="POST" th:action="@{/process-contact-information}" th:object="${user}">
+        <div th:insert="~{fragments/full-name :: fullName}"></div>
+        <div class="input-control">
+            <label for="patronymic">Patronymic</label>
+            <input id="patronymic" name="patronymic" type="text"
+                   pattern="^[A-Z][a-z]{1,49}$"
+                   title="Last name must start with a capital letter, contain only alphabetical characters,
+                    be between 2 and 50 characters" th:field="*{patronymic}">
+            <div class="error"></div>
+            <div th:if="${#fields.hasErrors('patronymic')}" th:errors="*{patronymic}"
+                 th:errorclass="error"></div>
+        </div>
+        <div th:insert="~{fragments/email :: emailAddress}"></div>
+        <div class="input-control">
+            <label for="phone">Phone number</label>
+            <input id="phone" name="phone" type="text"
+                   placeholder="066 123 4567"
+                   pattern="^0\d{2}\s?\d{3}\s?\d{4}$"
+                   title="Phone number must contain 10 digits and start with a number of mobile operator."
+                   th:field="*{phone}" required>
+            <div class="error"></div>
+            <div th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}" th:errorclass="error">
+            </div>
+        </div>
+        <div class="message">
+            <p><a th:href="@{/change-password}">Change Password</a></p>
+        </div>
+        <button type="submit">Save</button>
+    </form>
+</div>
+</body>
+
+</html>

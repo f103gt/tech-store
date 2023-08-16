@@ -1,0 +1,12 @@
+<div th:fragment="emailAddress">
+  <div class="input-control">
+    <label for="email">E-mail</label>
+    <input id="email" name="email" type="text" placeholder="johndoe123@domain.com"
+           pattern="^[a-z0-9]+(?:[.+\\-][a-z0-9]+)*@gmail\.com$"
+           title="E-mail address must contain domain 'gmail.com'." th:field="*{email}"
+           required>
+    <div class="error"></div>
+    <div th:if="${#fields.hasErrors('email')}" th:errors="*{email}" th:errorclass="error">
+    </div>
+  </div>
+</div>

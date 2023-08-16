@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Confirmation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/css/navigation.css">
+    <script defer src="/js/navigation.js"></script>
+     <link rel="stylesheet" type="text/css" href="/css/email-confirmation-prompt.css">
+</head>
+
+<body>
+<header th:insert="~{fragments/navigation :: navbar}">
+</header>
+<div class="container">
+    <div class="prompt">
+        <h1>TECHNOLOGY</h1>
+        <h5><strong>Check your email to log in</strong></h5>
+        <div class="image"><img src="/image/email.jpg"></div>
+        <p>To proceed with registration and log in, click the verification link in the email we have sent to
+            <strong class="email" th:text="${userEmail.email}"></strong></p>
+        <button type="submit">Resend email</button>
+    </div>
+</div>
+</body>
+
+</html>

@@ -1,0 +1,187 @@
+/* The new CSS Reset - version 1.2.0 (last updated 23.7.2021) */
+/* Remove all the styles of the "User-Agent-Stylesheet", except for the 'display' property */
+*:where(:not(iframe, canvas, img, svg, video):not(svg *)) {
+    all: unset;
+    display: revert;
+}
+
+/* Preferred box-sizing value */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* Remove list styles (bullets/numbers) */
+ol,
+ul {
+    list-style: none;
+}
+
+/* For images to not exceed their container */
+img {
+    max-width: 100%;
+}
+
+/* Remove spacing between cells in tables */
+table {
+    border-collapse: collapse;
+}
+
+/* Revert the 'white-space' property for textarea elements on Safari */
+textarea {
+    white-space: revert;
+}
+
+/* MY-CODE */
+/* body */
+body {
+    background-color: white;
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    width: 330px;
+}
+
+form {
+    width: 100%;
+    margin: 0 auto;
+    padding: 23px;
+    background-color: white;
+    border-radius: 4px;
+    font-size: 11px;
+    border: 1px solid black;
+}
+
+form h1 {
+    color: #0f2027;
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+form button {
+    padding: 10px;
+    margin-top: 10px;
+    width: 100%;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.84);
+    border: none;
+    border-radius: 4px;
+    margin-bottom: 5px;
+    text-align: center;
+}
+
+/* section */
+section {
+    width: 100%;
+    min-height: inherit;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+}
+
+.light {
+    --primary: hsl(0, 1%, 28%);
+    --other: hsl(0, 0%, 14%);
+    background: hsl(0, 0%, 98%);
+}
+
+/* label */
+label {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: nowrap;
+    margin: 12px 0;
+    cursor: pointer;
+    position: relative;
+}
+
+/* input */
+input {
+    opacity: 0;
+    z-index: -1;
+}
+
+/* .design */
+.design {
+    width: 16px;
+    height: 16px;
+    border: 1px solid var(--other);
+    border-radius: 100%;
+    margin-right: 16px;
+    position: relative;
+}
+
+.design::before,
+.design::after {
+    content: "";
+    display: block;
+    width: inherit;
+    height: inherit;
+    border-radius: inherit;
+    position: absolute;
+    transform: scale(0);
+    transform-origin: center center;
+}
+
+.design:before {
+    background: var(--other);
+    opacity: 0;
+    transition: .3s;
+}
+
+.design::after {
+    background: var(--primary);
+    opacity: .4;
+    transition: .6s;
+}
+
+/* .text */
+.text {
+    color: var(--other);
+    font-weight: bold;
+}
+
+/* checked state */
+input:checked+.design::before {
+    opacity: 1;
+    transform: scale(.6);
+}
+
+/* other states */
+input:hover+.design,
+input:focus+.design {
+    border: 1px solid var(--primary);
+}
+
+input:hover+.design:before,
+input:focus+.design:before {
+    background: var(--primary);
+}
+
+input:hover~.text {
+    color: var(--primary);
+}
+
+input:focus+.design::after,
+input:active+.design::after {
+    opacity: .1;
+    transform: scale(2.6);
+}
+
+.vertical-radio-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}

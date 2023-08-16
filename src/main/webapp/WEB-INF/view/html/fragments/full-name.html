@@ -1,0 +1,22 @@
+<div th:fragment="fullName">
+    <div class="input-control">
+        <label for="first-name">First name</label>
+        <input id="first-name" name="firstName" type="text"
+               pattern="^[A-Z][a-z]{1,49}$"
+               title="First name must start with a capital letter, contain only alphabetical characters,
+                    be between 2 and 50 characters" th:field="*{firstName}" required>
+        <div class="error"></div>
+        <div th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"
+             th:errorclass="error"></div>
+    </div>
+    <div class="input-control">
+        <label for="last-name">Last name</label>
+        <input id="last-name" name="lastName" type="text"
+               pattern="^[A-Z][a-z]{1,49}$"
+               title="Last name must start with a capital letter, contain only alphabetical characters,
+                    be between 2 and 50 characters" th:field="*{lastName}" required>
+        <div class="error"></div>
+        <div th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"
+             th:errorclass="error"></div>
+    </div>
+</div>

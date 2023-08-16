@@ -1,0 +1,12 @@
+<div th:fragment="OTP">
+    <div class="input-control">
+        <input name="otp" type="text"
+               pattern="^[0-9]{6}$"
+               title="OTP code must contain 6 digits."
+               th:value="${otp}">
+        <div class="error"></div>
+        <div th:if="${#fields.hasErrors('otp')}" th:errors="${otp}"
+             th:errorclass="error"></div>
+    </div>
+    <button id="validate-btn" type="button">Validate</button>
+</div>

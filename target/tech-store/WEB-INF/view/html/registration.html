@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/tech-store.com/css/registration.css">
+    <script defer src="/tech-store.com/js/registration.js"></script>
+</head>
+<body>
+<div class="container">
+    <form id="form" th:method="POST" th:action="@{/tech-store.com/process-registration}" th:object="${user}"
+          novalidate>
+        <h1>Registration</h1>
+        <div class="input-control">
+            <label for="first-name">First name</label>
+            <input id="first-name" name="firstName" type="text" placeholder="John"
+                   pattern="^[A-Z][a-z]{1,49}$" title="First name must start with a capital letter, contain only alphabetical characters,
+                    be between 2 and 50 characters" th:field="*{firstName}" required>
+            <div class="error"></div>
+            <div th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"
+                 th:errorclass="error"></div>
+        </div>
+        <div class="input-control">
+            <label for="last-name">Last name</label>
+            <input id="last-name" name="lastName" type="text" placeholder="Doe" pattern="^[A-Z][a-z]{1,49}$" title="Last name must start with a capital letter, contain only alphabetical characters,
+                    be between 2 and 50 characters" th:field="*{lastName}" required>
+            <div class="error"></div>
+            <div th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"
+                 th:errorclass="error"></div>
+        </div>
+        <div class="input-control">
+            <label for="email">E-mail</label>
+            <input id="email" name="email" type="text" placeholder="johndoe123@domain.com"
+                   pattern="^[a-z0-9]+(?:[.+\\-][a-z0-9]+)*@gmail\.com$"
+                   title="E-mail address must contain domain 'gmail.com'." th:field="*{email}"
+                   required>
+            <div class="error"></div>
+            <div th:if="${#fields.hasErrors('email')}" th:errors="*{email}" th:errorclass="error">
+            </div>
+        </div>
+        <!--<div class="input-control">
+            <label for="phone">Phone number</label>
+            <input id="phone" name="phone" type="text" placeholder="066 123 4567" pattern="^0\d{2}\s?\d{3}\s?\d{4}$"
+                   title="Phone number must contain 10 digits and start with a number of mobile operator."
+                   th:field="*{phone}" required>
+            <div class="error"></div>
+            <div th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}" th:errorclass="error">
+            </div>
+        </div>-->
+        <div class="input-control">
+            <label for="password">Password</label>
+            <input id="password" name="password" type="password"
+                   pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,20}$" title="Password must contain at least one lowercase letter, one uppercase letter,
+                one digit,one special character (@$!%*?&), and be 8-20 characters long" th:field="*{password}"
+                   required>
+            <div class="error"></div>
+            <div th:if="${#fields.hasErrors('password')}" th:errors="*{password}"
+                 th:errorclass="error"></div>
+        </div>
+        <div class="input-control">
+            <label for="password-confirmation">Password confirmation</label>
+            <input id="password-confirmation" name="passwordConfirmation" type="password" th:field="*{passwordConfirmation}">
+            <div class="error"></div>
+            <div th:if="${#fields.hasErrors('passwordConfirmation')}" th:errors="*{passwordConfirmation}"
+                 th:errorclass="error"></div>
+        </div>
+        <button type="submit">Sign Up</button>
+    </form>
+</div>
+</body>
+
+</html>

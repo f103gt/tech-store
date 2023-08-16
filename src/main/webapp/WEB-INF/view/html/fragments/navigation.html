@@ -1,0 +1,94 @@
+<div th:fragment="navbar">
+    <nav class="navigation">
+        <div class="p-3 bg-dark text-white">
+            <div class="flexMain">
+                <div class="flex1"></div>
+                <div class="flex1"></div>
+            </div>
+        </div>
+        <div id="menuHolder">
+            <div role="navigation" class="sticky-top border-bottom border-top" id="mainNavigation">
+                <div class="flexMain">
+                    <div class="flex2">
+                        <button class="whiteLink siteLink" style="border-right:1px solid #eaeaea"
+                                onclick="menuToggle()">
+                            <i class="fas fa-bars me-2"></i>
+                            <span class="products-inscription"> Products</span>
+                        </button>
+                    </div>
+                    <div class="flex3 text-center" id="siteBrand">
+                        <a href="/"><i class="fa-solid fa-gear fa-sm"></i> TECHNOLOGY</a>
+                    </div>
+                    <div class="flex2 text-end d-none d-md-block">
+                        <button class="whiteLink siteLink" onclick="window.location.href='/cart'">
+                            <i class="fa-solid fa-cart-shopping fa-xl"></i>
+                        </button>
+                        <a class="whiteLink siteLink" th:if="${role=='user'}" th:href="@{/account}">
+                            <i class="fa-solid fa-user fa-xl"></i></a>
+                        <a class="whiteLink siteLink" th:if="${role=='manager'}"
+                           th:href="@{/management}">
+                            <i class="fa-solid fa-user-lock fa-xl"></i></a>
+                        <a class="whiteLink siteLink" th:if="${role=='admin'}"
+                           th:href="@{/admin-account}">
+                            <i class="fa-solid fa-user-shield fa-xl"></i></a>
+                        <button class="whiteLink siteLink" th:if="${role=='guest'}"
+                                onclick="window.location.href='/login'">
+                            <i class="fa-solid fa-right-to-bracket fa-xl"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div id="menuDrawer">
+                <div class="p-4 border-bottom">
+                    <div class="row">
+                        <div class="col text-end">
+                            <i class="fas fa-times" role="tab" onclick="menuToggle()"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!--<div th:each="parentEntry : ${categories}">
+                    <div class="nav-menu-item">
+                        <div th:if="${parentEntry.value.size() == 0}">
+                            <a th:href="@{'/categories?categoryName=' + ${parentEntry.key.categoryName}}">
+                                <span th:text="${parentEntry.key.categoryName}"></span>
+                            </a>
+                        </div>
+                        <div th:if="${parentEntry.value.size() > 0}">
+                            <a class="collapsible">
+                                <span th:text="${parentEntry.key.categoryName}"></span>
+                            </a>
+                            <div class="content">
+                                <ul>
+                                    <li th:each="child : ${parentEntry.value}">
+                                        <div class="collapsible-menu-item">
+                                            <a th:href="@{'/categories?categoryName=' + ${child.categoryName}}">
+                                                <span th:text="${child.categoryName}"></span>
+                                            </a>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>-->
+
+                <div th:each="category : ${categories}">
+                    <div class="nav-menu-item">
+                        <a th:href="@{'/categories?categoryName=' + ${category.categoryName}}">
+                            <span th:text="${category.categoryName}"></span>
+                        </a>
+                    </div>
+                </div>
+
+                <hr th:if="${role=='manager'}" style="border-top: 2px solid; font-weight: bold;">
+                <a th:href="@{/add-category}" class="nav-menu-item" th:if="${role=='manager'}">
+                    <i class="fa-sharp fa-solid fa-circle-plus"></i> Add Category</a>
+                <a th:href="@{/delete-category}" class="nav-menu-item" th:if="${role=='manager'}">
+                    <i class="fa-solid fa-circle-minus"></i> Delete Category</a>
+                <a th:href="@{/edit-category}" class="nav-menu-item" th:if="${role=='manager'}">
+                    <i class="fa-solid fa-pen-to-square"></i> Edit Category</a>
+            </div>
+        </div>
+    </nav>
+</div>

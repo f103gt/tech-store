@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/css/navigation.css">
+    <script defer src="/js/navigation.js"></script>
+    <!--<script defer src="/tech-store.com/js/registration.js"></script>-->
+    <link rel="stylesheet" type="text/css" href="/css/registration.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+          integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
+</head>
+
+<body>
+<header th:insert="~{fragments/navigation :: navbar}">
+</header>
+<div class="container">
+    <form id="form" th:method="post" th:action="@{/process-add-optional-characteristics}" th:object="${optionalCharacteristic}"
+          novalidate>
+        <h1>Add Optional Characteristics</h1>
+        <div th:insert="~{fragments/management/characteristic/characteristic-name :: characteristicName}"></div>
+        <div th:insert="~{fragments/management/characteristic/characteristic-details :: characteristicDetails}"></div>
+        <button th:type="submit" th:name="addMoreOptionalCharacteristics" th:value="true">Add more optional characteristics</button>
+        <p>Would you like to <a th:href="@{'/add-product-option?addMoreProductVariations=true'}"> Add
+            more product variations</a> or finish the process completely?</p>
+        <button th:type="submit" th:name="addMoreOptionalCharacteristics" th:value="false">Complete</button>
+    </form>
+</div>
+</body>
+
+</html>
