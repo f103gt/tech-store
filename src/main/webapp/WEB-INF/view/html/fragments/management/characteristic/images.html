@@ -1,8 +1,6 @@
 <div th:fragment="uploadImages">
     <div class="input-control">
-        <h3>Add Product Images</h3>
-        <p>The first added image will be set a primary one</p>
-        <label for="product-images" style="cursor: pointer;">Select Images</label>
+        <label for="product-images" style="cursor: pointer;">General Images</label>
         <input id="product-images" th:name="images" th:type="file" th:multiple="multiple"
                accept="image/*" required th:field="*{images}">
     </div>

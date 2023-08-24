@@ -27,7 +27,7 @@
                 <i class="fa-solid fa-circle-arrow-left fa-xl" id="backBtn"></i>
                 <div class="gallery">
                     <div class="gallery-container">
-                            <span th:each="imageId: ${specificProductImagesIds}">
+                            <span th:each="imageId: ${productImagesIds}">
                                 <img class="gallery-item" th:src="@{'/productImage?imageId=' + ${imageId}}">
                             </span>
                     </div>
@@ -38,10 +38,10 @@
         <div class="product__info">
             <div class="title">
                 <h1 th:text="${product.getProductName()}"></h1>
-                <span th:text="${specificProduct.getSku()}">Code: </span>
+                <span th:text="${product.getSku()}">Code: </span>
             </div>
             <div class="price">
-                $<span th:text="${specificProduct.getPrice()}"></span>
+                <span th:text="'$'+ ${price}"></span>
             </div>
             <div class="description">
                 <h3>Characteristics</h3>
@@ -57,7 +57,8 @@
                     </li>
                 </ul>
             </div>
-            <button class="buy&#45;&#45;btn">ADD TO CART</button>
+            <a class="buy&#45;&#45;btn" th:href="@{'/add-to-cart?productName='+${productName}}">
+                ADD TO CART</a>
         </div>
     </div>
 </main>

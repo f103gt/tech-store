@@ -6,8 +6,10 @@
         <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/view/html/contact-information.html" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/view/html" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/view/html/email-confirmation-prompt.html" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/view/html" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/view/html/email-registration.html" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/view/html" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/view/html/fragments/bootstrap-navigation.html" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/view/html/fragments" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/view/html/fragments/management/category-name.html" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/view/html/fragments/management" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/view/html/fragments/navigation.html" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/view/html/fragments" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/view/html/general/cart.html" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/view/html/general" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/view/html/home2.html" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/view/html" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/view/html/login.html" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/view/html" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/view/html/manager/add-product.html" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/view/html/manager" />

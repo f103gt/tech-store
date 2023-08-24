@@ -90,6 +90,8 @@
             <version>${spring}</version>
         </dependency>
 
+        <!--SPRING SECURITY-->
+
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-core</artifactId>
@@ -107,6 +109,7 @@
             <artifactId>spring-security-config</artifactId>
             <version>${spring.security}</version>
         </dependency>
+        <!--SPRING DATA JPA-->
 
         <dependency>
             <groupId>org.springframework.data</groupId>
@@ -230,6 +233,13 @@
             <artifactId>thymeleaf-spring6</artifactId>
             <version>${thymeleaf}</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.thymeleaf.extras</groupId>
+            <artifactId>thymeleaf-extras-springsecurity6</artifactId>
+            <version>3.1.2.RELEASE</version>
+        </dependency>
+
 
         <!--SLF4J-->
         <dependency>

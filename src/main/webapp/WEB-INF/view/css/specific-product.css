@@ -78,7 +78,7 @@ h3 {
 /* ----- Photo Section ----- */
 
 .gallery-wrapper {
-    width: 600px;
+    width: 700px;
     height: 600px;
     display: flex;
     align-items: center;
@@ -86,6 +86,7 @@ h3 {
     margin-top: 50px;
     margin-left: 50px;
     position: relative;
+    margin-right: 20px;
 }
 
 .gallery {

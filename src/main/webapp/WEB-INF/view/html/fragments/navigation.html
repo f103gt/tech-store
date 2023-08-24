@@ -1,4 +1,4 @@
-<div th:fragment="navbar">
+<div th:fragment="navbar" xmlns:sec="http://www.w3.org/1999/xhtml">
     <nav class="navigation">
         <div class="p-3 bg-dark text-white">
             <div class="flexMain">
@@ -81,13 +81,18 @@
                     </div>
                 </div>
 
-                <hr th:if="${role=='manager'}" style="border-top: 2px solid; font-weight: bold;">
-                <a th:href="@{/add-category}" class="nav-menu-item" th:if="${role=='manager'}">
-                    <i class="fa-sharp fa-solid fa-circle-plus"></i> Add Category</a>
-                <a th:href="@{/delete-category}" class="nav-menu-item" th:if="${role=='manager'}">
-                    <i class="fa-solid fa-circle-minus"></i> Delete Category</a>
-                <a th:href="@{/edit-category}" class="nav-menu-item" th:if="${role=='manager'}">
-                    <i class="fa-solid fa-pen-to-square"></i> Edit Category</a>
+                <!--<div th:if="${role=='manager'}">-->
+                <div sec:authorize="hasRole('MANAGER')">
+                    <hr style="border-top: 2px solid; font-weight: bold;">
+                    <a th:href="@{/add-category}" class="nav-menu-item">
+                        <i class="fa-sharp fa-solid fa-circle-plus"></i> Add Category</a>
+                    <a th:href="@{/delete-category}" class="nav-menu-item">
+                        <i class="fa-solid fa-circle-minus"></i> Delete Category</a>
+                    <a th:href="@{/edit-category}" class="nav-menu-item">
+                        <i class="fa-solid fa-pen-to-square"></i> Edit Category</a>
+                    <a th:href="@{/add-sale}" class="nav-menu-item">
+                        <i class="fa-solid fa-tag"></i> Add sale</a>
+                </div>
             </div>
         </div>
     </nav>

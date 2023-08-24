@@ -21,23 +21,13 @@
 <body>
 <header th:insert="~{fragments/navigation :: navbar}">
 </header>
-<div class="container">
+<div class="container" style="margin-top: 75px; width: 400px">
     <form id="form" th:method="POST"
           th:action="@{/process-add-product}"
           th:object="${product}" enctype="multipart/form-data"
           novalidate>
-        <h1>Add Product</h1>
-        <div class="input-control">
-            <label for="product-category-name">Product category name</label>
-            <input id="product-category-name" name="categoryName" type="text"
-                   pattern="^[A-Z][a-z]{1,49}$"
-                   title="Product name must start with a capital letter, contain only alphabetical characters,
-                    be 2-50 characters"
-                   th:field="*{categoryName}" required>
-            <!--<div class="error" th:if="${#fields.hasErrors('categoryName')}">
-                <p th:each="error : ${#fields.errors('categoryName')}" th:text="${error.message}"></p>
-            </div>-->
-        </div>
+        <h1 style="margin-top: 0">Add Product</h1>
+        <div th:insert="~{fragments/management/promotion/promotion :: categoryName}"></div>
         <div class="input-control">
             <label for="product-name">Product name</label>
             <input id="product-name" name="productName" type="text"
@@ -49,9 +39,45 @@
                 <p th:each="error : ${#fields.errors('productName')}" th:text="${error.message}"></p>
             </div>-->
         </div>
+        <div class="input-control">
+            <label for="sku">Product sku</label>
+            <input id="sku" name="sku" type="text"
+                   pattern="^[A-Z][a-z][0-9]{1,254}$"
+                   title="Product sku must contain with a capital letter, contain only alphabetical characters,
+                    be 2- characters"
+                   th:field="*{sku}" required>
+            <!--<div class="error" th:if="${#fields.hasErrors('sku')}">
+                <p th:each="error : ${#fields.errors('sku')}" th:text="${error.message}"></p>
+            </div>-->
+        </div>
+        <div class="input-control">
+            <label for="quantity">Quantity</label>
+            <input id="quantity" name="quantity" type="text"
+                   pattern="[0-9]{1,254}$"
+                   title="Product quantity must contain only digits"
+                   th:field="*{quantity}" required>
+            <!--<div class="error" th:if="${#fields.hasErrors('quantity')}">
+                <p th:each="error : ${#fields.errors('quantity')}" th:text="${error.message}"></p>
+            </div>-->
+        </div>
+        <div class="input-control">
+            <label for="price">Price</label>
+            <input id="price" name="price" type="text"
+                   pattern="[0-9]{1,254}$"
+                   title="Product price must contain only digits"
+                   th:field="*{price}" required>
+            <!--<div class="error" th:if="${#fields.hasErrors('quantity')}">
+                <p th:each="error : ${#fields.errors('quantity')}" th:text="${error.message}"></p>
+            </div>-->
+        </div>
+        <div class="input-control">
+            <h3>Add Product Images</h3>
+            <label for="product-images" style="cursor: pointer;">Primary Image</label>
+            <input id="product-images" th:name="primaryImage" th:type="file"
+                   accept="image/*" required th:field="*{primaryImage}">
+        </div>
         <div th:insert="~{fragments/management/characteristic/images :: uploadImages}"></div>
-        <!--style="display: compact;"-->
-        <button type="submit">Add characteristics</button>
+        <button type="submit" style="margin-bottom: 0">Add characteristics</button>
     </form>
 </div>
 </body>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/css/navigation.css">
+    <script defer src="/js/navigation.js"></script>
+    <link rel="stylesheet" type="text/css" href="/css/cart.css">
+    <script src="/js/cart.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+          integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
+
+
+</head>
+<body>
+<header th:insert="~{fragments/navigation :: navbar}"></header>
+<div class="shopping-cart">
+    <!-- Title -->
+    <div class="title">
+        Shopping Bag
+    </div>
+
+    <!-- Product -->
+    <div class="item">
+        <div class="buttons">
+            <span class="delete-btn"></span>
+            <span class="like-btn"></span>
+        </div>
+
+        <div th:if="${cartItems}!=null" th:each="cartItem: ${cartItems}">
+            <div class="image">
+                <img th:src="@{'/primary-image?cartItemProductName='+ ${cartItem.getProduct().getProductName()}}"
+                     alt=""/>
+            </div>
+
+            <div class="description">
+                <span th:text="${cartItem.getProduct().getProductName()}"></span>
+            </div>
+
+            <div class="quantity">
+                <a class="plus-btn" >
+                    <img src="/image/plus.svg" alt="" style="width: 15px; height: 15px"
+                         th:href="@{'/change-quantity?cartItem='+${cartItem}+'&action=augment'}"/>
+                </a>
+                <span th:text="${cartItem.getQuantity()}"></span>
+                <a class="minus-btn">
+                    <img src="/image/minus.svg" alt="" style="width: 15px; height: 15px"
+                         th:href="@{'/change-quantity?cartItem='+${cartItem}+'&action=subtraction'}"/>
+                </a>
+            </div>
+            <div class="total-price" th:text="'$'+${cartItem.getFinalPrice().multiply(cartItem.getQuantity())}"
+            ></div>
+        </div>
+    </div>
+
+    <div class="order_price">
+        <p>Order summary</p>
+        <h4></h4>
+
+    </div>
+    <div class="order_service">
+        <p>Delivery</p>
+        <h4>$10</h4>
+    </div>
+    <div class="order_total">
+        <p>Total Amount</p>
+        <h4 th:text="'$'+${finalPrice}"></h4>
+    </div>
+    <a th:href="@{'/order'}">Order</a>
+</div>
+</body>
+</html>
